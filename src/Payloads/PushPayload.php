@@ -472,11 +472,11 @@ class PushPayload extends AbstractPayload
     }
 
     /**
-     * @param  string  $alert
+     * @param  string|array  $alert
      * @param  array  $notification
      * @return $this
      */
-    public function iosNotification(string $alert = '', array $notification = array()): static
+    public function iosNotification($alert, array $notification = array()): static
     {
         $ios          = array();
         $ios['alert'] = (is_string($alert) || is_array($alert)) ? $alert : '';
@@ -526,7 +526,7 @@ class PushPayload extends AbstractPayload
      * @param  array  $notification
      * @return $this
      */
-    public function androidNotification(string $alert = '', array $notification = array()): static
+    public function androidNotification($alert = '', array $notification = array()): static
     {
         $android          = array();
         $android['alert'] = is_string($alert) ? $alert : '';
@@ -611,7 +611,7 @@ class PushPayload extends AbstractPayload
      * @param  array  $msg
      * @return $this
      */
-    public function message($msg_content, array $msg = array()): static
+    public function message($msg_content, $msg = array()): static
     {
         # $required_keys = array('title', 'content_type', 'extras');
         if (is_string($msg_content)) {
